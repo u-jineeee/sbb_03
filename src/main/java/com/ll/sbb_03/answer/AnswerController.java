@@ -1,6 +1,5 @@
 package com.ll.sbb_03.answer;
 
-import com.ll.sbb_03.DataNotFoundException;
 import com.ll.sbb_03.question.Question;
 import com.ll.sbb_03.question.QuestionService;
 import com.ll.sbb_03.user.SiteUser;
@@ -12,7 +11,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;

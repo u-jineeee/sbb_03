@@ -1,15 +1,12 @@
 package com.ll.sbb_03.question;
 
 import com.ll.sbb_03.DataNotFoundException;
-import com.ll.sbb_03.answer.Answer;
 import com.ll.sbb_03.user.SiteUser;
-import jakarta.persistence.criteria.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
