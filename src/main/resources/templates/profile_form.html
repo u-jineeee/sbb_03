@@ -1,0 +1,66 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <div class="my-3 border-bottom">
+        <div>
+            <h4 class="text-center">My Profile</h4>
+        </div>
+    </div>
+    <div class="mb-3 border-bottom row">
+        <label class="col-sm-2 col-form-label"><h5><span class="badge bg-dark">User Id</span></h5></label>
+        <div class="col">
+            <label class="col-sm-2 col-form-label" th:text="${user.username}"></label></div>
+    </div>
+    <div class="mb-3 border-bottom row">
+        <label class="col-sm-2 col-form-label"><h5><span class="badge bg-dark">Email</span></h5></label>
+        <div class="col">
+            <label class="col-sm-2 col-form-label" th:text="${user.email}"></label></div>
+    </div>
+    <!-- 작성자 질문 표시-->
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label"><h5><span class="badge bg-dark">My Question</span></h5></label>
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="col-sm-2">#</th>
+                <th class="col-sm-6">Subject</th>
+                <th class="col-sm-2">View</th>
+                <th class="col-sm-4">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="question, loop : ${user.questionList}">
+                <td th:text="${loop.count}"></td>
+                <td><a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
+                    <span class="text-danger small ms-2"
+                          th:if="${#lists.size(question.answerList) > 0}"
+                          th:text="${#lists.size(question.answerList)}">
+                    </span></td>
+                <td th:text="${question.view}"></td>
+                <td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 작성자 답변 표시 -->
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label"><h5><span class="badge bg-dark">My Answer</span></h5></label>
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="col-sm-2">#</th>
+                <th class="col-sm-8">Content</th>
+                <th class="col-sm-4">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="answer, loop : ${user.answerList}">
+                <td th:text="${loop.count}"></td>
+                <td><a th:href="@{|/question/detail/${answer.question.id}|}" th:text="${answer.content}"></a></td>
+                <td th:text="${#temporals.format(answer.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</html>
