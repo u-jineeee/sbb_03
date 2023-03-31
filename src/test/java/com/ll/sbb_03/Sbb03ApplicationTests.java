@@ -5,6 +5,8 @@ import com.ll.sbb_03.answer.AnswerRepository;
 import com.ll.sbb_03.question.Question;
 import com.ll.sbb_03.question.QuestionRepository;
 import com.ll.sbb_03.question.QuestionService;
+import com.ll.sbb_03.user.SiteUser;
+import com.ll.sbb_03.user.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ class Sbb03ApplicationTests {
 
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    private UserService userService;
 
     @Test
     @DisplayName("데이터 저장")
@@ -151,9 +156,10 @@ class Sbb03ApplicationTests {
     @DisplayName("대량 테스트 데이터 만들기")
     void test12(){
         for(int i = 1; i <= 300; i++) {
+            SiteUser user1 = userService.getUser("user1");
             String subject = String.format("테스트 데이터입니다: [%03d]",i);
             String content = "내용무";
-            this.questionService.create(subject, content, null);
+            this.questionService.create(subject, content, user1);
         }
     }
 }

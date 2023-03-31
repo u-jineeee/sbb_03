@@ -27,7 +27,7 @@
                 <th class="col-sm-4">Date</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="table-group-divider">
             <tr th:each="question, loop : ${user.questionList}">
                 <td th:text="${loop.count}"></td>
                 <td><a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
@@ -52,7 +52,7 @@
                 <th class="col-sm-4">Date</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="table-group-divider">
             <tr th:each="answer, loop : ${user.answerList}">
                 <td th:text="${loop.count}"></td>
                 <td><a th:href="@{|/question/detail/${answer.question.id}|}" th:text="${answer.content}"></a></td>
@@ -61,6 +61,5 @@
             </tbody>
         </table>
     </div>
-
 </div>
 </html>
